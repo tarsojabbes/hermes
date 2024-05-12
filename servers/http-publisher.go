@@ -52,7 +52,7 @@ func handlePublisherRegister(w http.ResponseWriter, r *http.Request) {
 	}
 
 	register_key := r.Header.Get("REGISTERKEY")
-	if register_key == "my_register_key" {
+	if register_key == os.Getenv("REGISTER_KEY") {
 		uuid := auth.RegisterAsPublisher()
 		io.WriteString(w, uuid)
 	} else {
